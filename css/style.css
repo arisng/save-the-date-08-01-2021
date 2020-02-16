@@ -1,0 +1,132 @@
+@media screen and (max-width: 1023px) {
+    body {
+        /*overflow-y: hidden;*/
+    }
+}
+
+body {
+    overflow-x: hidden;
+}
+
+.card-container {
+    position: absolute;
+    width: 100%;
+}
+
+.card-background {
+    width: 100%;
+    /*max-width: 1920px;*/
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.overlay {
+    position: absolute;
+    font-family: Quicksand;
+}
+
+.title {
+    width: 100%;
+    text-align: center;
+    top: 15%;
+    padding-left: 16.6vw;
+    padding-right: 12.5vw;
+    font-family: Quicksand;
+    font-size: 5vw;
+}
+
+@media screen and (min-width: 1920px) {
+    .title {
+        font-size: 96px;
+    }
+}
+
+.spouse1 {
+    width: 100%;
+    top: 21%;
+    padding-left: 24vw;
+    padding-right: 12.5vw;
+    font-family: Allura;
+    font-size: 14vw;
+}
+
+.vs {
+    width: 100%;
+    top: 29%;
+    padding-left: 46.6vw;
+    padding-right: 12.5vw;
+    font-family: Allura;
+    font-size: 4vw;
+}
+
+.spouse2 {
+    width: 100%;
+    top: 30%;
+    padding-left: 17.6vw;
+    padding-right: 12.5vw;
+    font-family: Allura;
+    font-size: 13vw;
+}
+
+.journey {
+    width: 100%;
+    text-align: center;
+    top: 56%;
+    padding-left: 22.6vw;
+    padding-right: 12.5vw;
+    font-size: 5vw;
+}
+
+.countdownContainer {
+    width: 100%;
+    top: 42%;
+    padding-left: 19.6vw;
+    padding-right: 12.5vw;
+    font-size: 5.5vw;
+    text-align: center;
+}
+
+/*.flipdown {
+    width: unset !important;
+    height: unset !important;
+    top: 37%;
+    padding-left: 18.6vw;
+    font-size: 3vw;
+    font-weight: normal !important;
+}
+    .flipdown .rotor,
+    .flipdown .rotor-top,
+    .flipdown .rotor-bottom,
+    .flipdown .rotor-leaf,
+    .flipdown .rotor-leaf-rear,
+    .flipdown .rotor-leaf-front {
+        width: 5.5vw !important;
+    }*/
+
+
+.venue {
+    width: 100%;
+    text-align: center;
+    top: 60%;
+    padding-left: 16.6vw;
+    padding-right: 12.5vw;
+    font-size: 5vw;
+}
+
+    .venue p {
+        margin-bottom: 0px !important;
+    }
+
+.venue1 {
+    padding-left: 4.6vw;
+    padding-right: 12.5vw;
+    font-size: 4vw;
+}
+
+.venue2 {
+    width: 100%;
+    padding-left: 26.6vw;
+    padding-right: 12.5vw;
+    font-size: 4vw;
+}
