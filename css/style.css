@@ -1,14 +1,16 @@
-@media screen and (max-width: 1023px) {
-    body {
-        /*overflow-y: hidden;*/
-    }
-}
-
 body {
     overflow-x: hidden;
 }
 
+.content-container {
+    position: relative;
+    overflow-x: hidden;
+    width: 100vw;
+    height: 100vh;
+}
+
 .card-container {
+    overflow-x: hidden;
     position: absolute;
     width: 100%;
 }
@@ -29,11 +31,11 @@ body {
 .title {
     width: 100%;
     text-align: center;
-    top: 15%;
+    top: 18%;
     padding-left: 16.6vw;
     padding-right: 12.5vw;
     font-family: Quicksand;
-    font-size: 5vw;
+    font-size: 4vw;
 }
 
 @media screen and (min-width: 1920px) {
@@ -44,46 +46,49 @@ body {
 
 .spouse1 {
     width: 100%;
-    top: 21%;
-    padding-left: 24vw;
-    padding-right: 12.5vw;
+    top: 23%;
+    /* padding-left: 25vw; */
+    /* padding-right: 12.5vw; */
     font-family: Allura;
-    font-size: 14vw;
+    font-size: 11vw;
+    text-align: center;
 }
 
 .vs {
     width: 100%;
-    top: 29%;
-    padding-left: 46.6vw;
-    padding-right: 12.5vw;
+    top: 32%;
+    /* padding-left: 46.6vw; */
+    /* padding-right: 12.5vw; */
     font-family: Allura;
-    font-size: 4vw;
+    font-size: 3vw;
+    text-align: center;
 }
 
 .spouse2 {
     width: 100%;
-    top: 30%;
-    padding-left: 17.6vw;
-    padding-right: 12.5vw;
+    top: 32%;
+    /* padding-left: 17.6vw; */
+    /* padding-right: 12.5vw; */
     font-family: Allura;
-    font-size: 13vw;
+    font-size: 11vw;
+    text-align: center;
 }
 
 .journey {
     width: 100%;
     text-align: center;
-    top: 56%;
-    padding-left: 22.6vw;
+    top: 59%;
+    padding-left: 14.6vw;
     padding-right: 12.5vw;
-    font-size: 5vw;
+    font-size: 4vw;
 }
 
 .countdownContainer {
     width: 100%;
-    top: 42%;
-    padding-left: 19.6vw;
-    padding-right: 12.5vw;
-    font-size: 5.5vw;
+    top: 45%;
+    padding-left: 22.6vw;
+    padding-right: 21.5vw;
+    font-size: 4.5vw;
     text-align: center;
 }
 
@@ -108,8 +113,8 @@ body {
 .venue {
     width: 100%;
     text-align: center;
-    top: 60%;
-    padding-left: 16.6vw;
+    top: 64%;
+    padding-left: 14.6vw;
     padding-right: 12.5vw;
     font-size: 5vw;
 }
@@ -119,14 +124,14 @@ body {
     }
 
 .venue1 {
-    padding-left: 4.6vw;
+    padding-left: 13.6vw;
     padding-right: 12.5vw;
-    font-size: 4vw;
+    font-size: 3vw;
 }
 
 .venue2 {
     width: 100%;
-    padding-left: 26.6vw;
+    padding-left: 6.6vw;
     padding-right: 12.5vw;
-    font-size: 4vw;
+    font-size: 3vw;
 }
