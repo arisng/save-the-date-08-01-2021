@@ -1,0 +1,253 @@
+var BasicInvite;
+(function (BasicInvite) {
+    var GoogleAnalytics = /** @class */ (function () {
+        function GoogleAnalytics($) {
+            this.$ = $;
+            this.products = [];
+        }
+        GoogleAnalytics.addNewCustomerAccount = function () {
+            if (typeof window.ga !== 'undefined') {
+                window.ga('send', { hitType: 'event', eventCategory: 'New Account', eventAction: 'Submit', eventLabel: 'New Customer SignUp' });
+                var service = new BasicInvite.JsonService();
+                service.server('/customer/account/customerAccountCreated', { newCustomerAccount: true }, 'JSON', 'POST');
+            }
+        };
+        GoogleAnalytics.refundOrder = function (incrementId) {
+            if (window.ga) {
+                window.ga('ec:setAction', 'refund', { 'id': incrementId });
+                window.ga('send', 'event', 'Ecommerce', 'Refund');
+            }
+        };
+        GoogleAnalytics.sendEvent = function (category, action, label) {
+            window.ga && window.ga('send', 'event', category, action, label);
+        };
+        GoogleAnalytics.sendTimingEvent = function (category, label, timeValue) {
+            window.ga && window.ga('send', 'timing', category, label, timeValue);
+        };
+        GoogleAnalytics.addToCart = function (product, price, quantity, listName) {
+            if (window.ga) {
+                var p = {
+                    'id': product.Id,
+                    'name': product.name,
+                    'category': product.attributeSetName,
+                    'variant': product.sku,
+                    'price': price,
+                    'quantity': quantity
+                };
+                var category = 'Product Navigation';
+                var action = 'click';
+                var label = 'add to cart';
+                if (listName) {
+                    p['list'] = listName;
+                    category = 'Ecommerce';
+                    action = 'click - ' + listName;
+                }
+                window.ga('ec:addProduct', p);
+                window.ga('ec:setAction', 'add', (listName ? { 'list': listName } : {}));
+                window.ga('send', 'event', category, action, label);
+            }
+        };
+        GoogleAnalytics.removeFromCart = function (product, price, quantity) {
+            if (window.ga) {
+                var p = {
+                    'id': product.Id,
+                    'name': product.name,
+                    'category': product.attributeSetName,
+                    'variant': product.sku,
+                    'price': price,
+                    'quantity': quantity
+                };
+                window.ga('ec:addProduct', p);
+                window.ga('ec:setAction', 'remove');
+                window.ga('send', 'event', 'Product Navigation', 'click', 'remove from cart');
+            }
+        };
+        GoogleAnalytics.addImpression = function (product) {
+            if (window.ga) {
+                var p = {
+                    'id': product.Id,
+                    'name': product.name,
+                    'category': product.attributeSetName,
+                    'variant': product.sku,
+                };
+                window.ga('ec:addImpression', p);
+            }
+        };
+        GoogleAnalytics.addProductView = function (product) {
+            if (window.ga) {
+                var p = {
+                    'id': product.Id,
+                    'name': product.name,
+                    'category': product.attributeSetName,
+                    'variant': product.sku,
+                };
+                window.ga('ec:addProduct', p);
+                window.ga('ec:setAction', 'detail');
+            }
+        };
+        GoogleAnalytics.logInUser = function (customerId) {
+            if (window.ga) {
+                window.ga('set', 'userId', customerId);
+                window.ga('send', 'event', 'Authentication', 'Submit', 'Modal Login');
+            }
+        };
+        GoogleAnalytics.forgotPassword = function (customerId) {
+            if (window.ga) {
+                window.ga('send', 'event', 'Authentication', 'Submit', 'Forgot Password');
+            }
+        };
+        GoogleAnalytics.sendTransaction = function (data) {
+            if (window.ga) {
+                if (data.customer_id) {
+                    window.ga('set', 'userId', data.customer_id);
+                }
+                if (data.currency) {
+                    window.ga('set', 'currencyCode', data.currency);
+                }
+                if (data.items) {
+                    for (var _i = 0, _a = data.items; _i < _a.length; _i++) {
+                        var item = _a[_i];
+                        window.ga('ec:addProduct', item);
+                    }
+                }
+                if (data.transaction_details) {
+                    window.ga('ec:setAction', 'purchase', data.transaction_details);
+                }
+                window.ga('send', 'event', 'Ecommerce', 'Purchase');
+            }
+        };
+        GoogleAnalytics.addPromoImpression = function (promo) {
+            if (window.ga) {
+                window.ga('ec:addPromo', promo);
+            }
+        };
+        GoogleAnalytics.sendPromoClick = function (promo) {
+            if (window.ga) {
+                window.ga('ec:addPromo', promo);
+                window.ga('ec:setAction', 'promo_click');
+                window.ga('send', 'event', 'Internal Promotions', 'click', promo.name);
+            }
+        };
+        GoogleAnalytics.prototype.setProductList = function (products, listName) {
+            this.products = products;
+            this.listName = listName;
+        };
+        GoogleAnalytics.prototype.getProductList = function () {
+            return this.products;
+        };
+        GoogleAnalytics.prototype.addImpressionsForProducts = function () {
+            if (window.ga) {
+                var products = this.getProductList();
+                if (products) {
+                    var count = 0;
+                    //Info for "Payload size is too large' error in console
+                    //https://stackoverflow.com/questions/39340409/google-analytics-enhanced-ecommerce-payload-too-big-on-checkout
+                    //https://www.savio.no/analytics/easier-enhanced-ecommerce-product-promo-tracking
+                    var maxProductsToReducePayloadSize = 24;
+                    for (var _i = 0, products_1 = products; _i < products_1.length; _i++) {
+                        var p = products_1[_i];
+                        if (count > maxProductsToReducePayloadSize) {
+                            count = 0;
+                            this.sendImpressionEvent();
+                        }
+                        window.ga('ec:addImpression', p);
+                        count++;
+                    }
+                    if (count) {
+                        this.sendImpressionEvent();
+                    }
+                }
+            }
+        };
+        GoogleAnalytics.prototype.sendImpressionEvent = function () {
+            window.ga && window.ga('send', 'event', 'Ecommerce', 'Impression');
+        };
+        GoogleAnalytics.prototype.addClickForProductList = function (productId, listName) {
+            if (window.ga) {
+                var p = this.getProductById(productId);
+                if (p) {
+                    window.ga('ec:addProduct', p);
+                    window.ga('ec:setAction', 'click', { 'list': listName });
+                }
+            }
+        };
+        GoogleAnalytics.prototype.attachProductListClickEvent = function () {
+            var _this = this;
+            this.$(document).off('click.analytics-product-list').on('click.analytics-product-list', '.products-grid li a', function (e) {
+                var $a = _this.$(e.currentTarget);
+                var $el = $a.closest('li');
+                var pId = $el.attr('data-product-id');
+                _this.addClickForProductList(pId, _this.listName);
+                if ($a.hasClass('s7-create-website-button')) {
+                    _this.addProductToCart(pId, 0.00, 1);
+                }
+            });
+        };
+        GoogleAnalytics.prototype.attachRelatedItemsClickEvent = function () {
+            var _this = this;
+            this.$(document).off('click.analytics-related-list').on('click.analytics-related-list', '.itemslider .item a', function (e) {
+                var $a = _this.$(e.currentTarget);
+                var $el = $a.closest('div.item');
+                var pId = $el.attr('data-product-id');
+                _this.addClickForProductList(pId, _this.listName);
+            });
+        };
+        GoogleAnalytics.prototype.getProductById = function (productId) {
+            var products = this.getProductList();
+            if (products) {
+                var i = products.findIndex(function (m) { return m.id == productId; });
+                if (products[i]) {
+                    return products[i];
+                }
+            }
+        };
+        GoogleAnalytics.prototype.addProductToCart = function (productId, price, quantity) {
+            if (window.ga) {
+                var p = this.getProductById(productId);
+                if (p) {
+                    var prod = new BasicInvite.BiProduct();
+                    prod.Id = p.id;
+                    prod.attributeSetName = p.category;
+                    prod.name = p.name;
+                    prod.sku = p.variant;
+                    GoogleAnalytics.addToCart(prod, price, quantity);
+                }
+            }
+        };
+        GoogleAnalytics.attachPromoClickEvent = function ($) {
+            if (window.ga) {
+                $(document).off('click.promo-analytics').on('click.promo-analytics', 'a[data-promo-id]', function (e) {
+                    var $a = $(e.currentTarget);
+                    var promo = {
+                        id: $a.attr('data-promo-id'),
+                        name: $a.attr('data-promo-name'),
+                        creative: $a.attr('data-promo-creative'),
+                        position: $a.attr('data-promo-position'),
+                    };
+                    GoogleAnalytics.sendPromoClick(promo);
+                });
+            }
+        };
+        GoogleAnalytics.addAllPromoImpressions = function ($) {
+            if (window.ga) {
+                $('a[data-promo-id]').each(function (index, el) {
+                    var $a = $(el);
+                    var promo = {
+                        id: $a.attr('data-promo-id'),
+                        name: $a.attr('data-promo-name'),
+                        creative: $a.attr('data-promo-creative'),
+                        position: $a.attr('data-promo-position'),
+                    };
+                    GoogleAnalytics.addPromoImpression(promo);
+                });
+            }
+        };
+        return GoogleAnalytics;
+    }());
+    BasicInvite.GoogleAnalytics = GoogleAnalytics;
+})(BasicInvite || (BasicInvite = {}));
+jQuery(function ($) {
+    window.BasicInvite.GoogleAnalytics.attachPromoClickEvent($);
+    window.BasicInvite.GoogleAnalytics.addAllPromoImpressions($);
+});
+//# sourceMappingURL=google-analytics.js.map
