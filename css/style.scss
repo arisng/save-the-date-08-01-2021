@@ -1,101 +1,61 @@
+@import "breakpoints";
+
 .iframe {
   width: 100vw;
   position: absolute;
   min-height: 100vh;
   top: 100vh;
-  /* iPhone X ----------- */
-  /* iPhone X ----------- */
-  /* iPhone 6+, 7+, 8+ ----------- */
-  /* iPhone 6+, 7+, 8+ ----------- */
-  /* iPhone 6, 7, 8 ----------- */
-  /* iPhone 6, 7, 8 ----------- */
-  /* iPhone 5 ----------- */
-  /* iPhone 5 ----------- */
-  /* iPads (portrait) ----------- */
-  /* iPads (landscape) ----------- */
-  /* iPad Pro (portrait) ----------- */
-  /* iPad Pro (landscape) ----------- */
-}
 
-@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
-  .iframe {
+  @include for-iPhoneX-portrait-only {
     min-height: 150vh;
     top: 70vh;
   }
-}
-
-@media only screen and (min-device-width: 375px) and (max-device-height: 812px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
-  .iframe {
+  @include for-iPhoneX-landscape-only {
     min-height: 250vh;
     top: 100vh;
   }
-}
 
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 3) {
-  .iframe {
+  @include for-iPhone-6Plus-7Plus-8Plus-portrait-only {
     min-height: 150vh;
     top: 80vh;
   }
-}
-
-@media only screen and (min-device-width: 414px) and (max-device-height: 736px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 3) {
-  .iframe {
+  @include for-iPhone-6Plus-7Plus-8Plus-landscape-only {
     min-height: 250vh;
     top: 100vh;
   }
-}
 
-@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
-  .iframe {
+  @include for-iPhone6-7-8-portrait-only {
     min-height: 150vh;
     top: 80vh;
   }
-}
-
-@media only screen and (min-device-width: 375px) and (max-device-height: 667px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
-  .iframe {
+  @include for-iPhone6-7-8-landscape-only {
     min-height: 300vh;
     top: 100vh;
   }
-}
 
-@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: portrait) and (-webkit-device-pixel-ratio: 2) {
-  .iframe {
+  @include for-iPhone5-portrait-only {
     min-height: 200vh;
     top: 80vh;
   }
-}
-
-@media only screen and (min-device-width: 320px) and (max-device-height: 568px) and (orientation: landscape) and (-webkit-device-pixel-ratio: 2) {
-  .iframe {
+  @include for-iPhone5-landscape-only {
     min-height: 300vh;
     top: 100vh;
   }
-}
 
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) {
-  .iframe {
+  @include for-iPad-portrait-only {
     min-height: 100vh;
     top: 100vh;
   }
-}
-
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) {
-  .iframe {
+  @include for-iPad-landscape-only {
     min-height: 120vh;
     top: 100vh;
   }
-}
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: portrait) {
-  .iframe {
+  @include for-iPad-Pro-portrait-only {
     min-height: 70vh;
     top: 100vh;
   }
-}
-
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
-  .iframe {
+  @include for-iPad-Pro-landscape-only {
     min-height: 90vh;
     top: 100vh;
   }
@@ -121,8 +81,6 @@ body {
 .card-background {
   width: 100%;
   /*max-width: 1920px;*/
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -213,6 +171,7 @@ body {
     .flipdown .rotor-leaf-front {
         width: 5.5vw !important;
     }*/
+
 .venue {
   width: 100%;
   text-align: center;
@@ -240,4 +199,3 @@ body {
   padding-right: unset;
   font-size: 3vw;
 }
-/*# sourceMappingURL=style.css.map */
