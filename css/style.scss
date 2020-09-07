@@ -81,6 +81,7 @@ body {
 
 .card-background {
   width: 114%;
+  height: 100%;
   /*max-width: 1920px;*/
   display: flex;
   margin-left: -7vw;
@@ -102,6 +103,16 @@ body {
   font-size: 4vw;
 }
 
+.request {
+  width: 100%;
+  text-align: center;
+  top: 78%;
+  padding-left: 14.6vw;
+  padding-right: 12.5vw;
+  font-family: Quicksand;
+  font-size: 3vw;
+}
+
 @media screen and (min-width: 1920px) {
   .title {
     font-size: 96px;
@@ -120,7 +131,7 @@ body {
 
 .vs {
   width: 100%;
-  top: 32%;
+  top: 31%;
   /* padding-left: 46.6vw; */
   /* padding-right: 12.5vw; */
   font-family: Allura;
