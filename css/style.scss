@@ -64,6 +64,7 @@
 
 body {
   overflow-x: hidden;
+  // color: white;
 }
 
 .content-container {
@@ -71,6 +72,9 @@ body {
   overflow-x: hidden;
   width: 100vw;
   height: 100vh;
+  max-width: 1024px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .card-container {
@@ -80,12 +84,21 @@ body {
 }
 
 .card-background {
-  width: 114%;
-  height: 100%;
-  /*max-width: 1920px;*/
+  width: 129%;
+  height: 107%;
   display: flex;
-  margin-left: -7vw;
+  margin-left: -14vw;
   margin-right: auto;
+  margin-top: -12vw;
+
+  @media screen and (min-width: 1024px) {
+    height: 120%;
+    margin-top: -7vw;
+  }
+
+  @media screen and (min-width: 1366px) {
+    margin-left: -11vw;
+  }
 }
 
 .overlay {
@@ -96,11 +109,15 @@ body {
 .title {
   width: 100%;
   text-align: center;
-  top: 18%;
+  top: 23%;
   padding-left: 16.6vw;
   padding-right: 12.5vw;
   font-family: Quicksand;
   font-size: 4vw;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 40.96px;
+  }
 }
 
 .request {
@@ -113,56 +130,63 @@ body {
   font-size: 3vw;
 }
 
-@media screen and (min-width: 1920px) {
-  .title {
-    font-size: 96px;
-  }
-}
-
 .spouse1 {
   width: 100%;
-  top: 23%;
+  top: 28%;
   /* padding-left: 25vw; */
   /* padding-right: 12.5vw; */
   font-family: Allura;
   font-size: 11vw;
   text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 112px;
+  }
 }
 
 .vs {
   width: 100%;
-  top: 31%;
+  top: 35.5%;
   /* padding-left: 46.6vw; */
   /* padding-right: 12.5vw; */
   font-family: Allura;
   font-size: 3vw;
   text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 30.72px;
+    top: 36.5%;
+  }
 }
 
 .spouse2 {
   width: 100%;
-  top: 32%;
+  top: 37%;
   /* padding-left: 17.6vw; */
   /* padding-right: 12.5vw; */
   font-family: Allura;
   font-size: 11vw;
   text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 112px;
+  }
 }
 
 .journey {
   width: 100%;
   text-align: center;
   top: 59%;
-  padding-left: 14.6vw;
+  padding-left: 13.6vw;
   padding-right: 12.5vw;
-  font-size: 4vw;
+  font-size: 3.5vw;
 }
 
 .countdownContainer {
   width: 100%;
-  top: 45%;
-  padding-left: 22.6vw;
-  padding-right: 21.5vw;
+  top: 84%;
+  padding-left: 5.5vw;
+  padding-right: 5.5vw;
   font-size: 4.5vw;
   text-align: center;
 }
@@ -187,10 +211,22 @@ body {
 .venue {
   width: 100%;
   text-align: center;
-  top: 64%;
+  top: 46%;
   padding-left: 14.6vw;
   padding-right: 12.5vw;
   font-size: 5vw;
+
+  .datetime {
+    font-size: 8vw;
+  }
+
+  @media screen and (min-width: 1024px) {
+    top: 48%;
+
+    .datetime {
+      font-size: 81.92px;
+    }
+  }
 }
 
 .venue p {
@@ -210,4 +246,12 @@ body {
   margin-left: -14vw;
   padding-right: unset;
   font-size: 3vw;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 25.6px;
+  }
+}
+
+.invitation {
+  text-transform: uppercase;
 }
