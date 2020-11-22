@@ -225,30 +225,16 @@ body {
   overflow-x: hidden;
   position: relative;
   width: 100%;
+  color: #8e8e40;
 }
 
 .card-background {
-  width: 129%;
-  height: 107%;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin-left: -14vw;
+  margin-left: auto;
   margin-right: auto;
-  margin-top: -12vw;
-}
-
-@media screen and (min-width: 1024px) {
-  .card-background {
-    height: 120%;
-    margin-top: -7vw;
-  }
-}
-
-@media screen and (min-width: 1366px) {
-  .card-background {
-    margin-left: -11vw;
-  }
 }
 
 .overlay {
@@ -259,7 +245,7 @@ body {
 .title {
   width: 100%;
   text-align: center;
-  top: 23%;
+  top: 11%;
   padding-left: 16.6vw;
   padding-right: 12.5vw;
   font-family: Quicksand;
@@ -284,9 +270,7 @@ body {
 
 .spouse1 {
   width: 100%;
-  top: 28%;
-  /* padding-left: 25vw; */
-  /* padding-right: 12.5vw; */
+  top: 20%;
   font-family: Allura;
   font-size: 11vw;
   text-align: center;
@@ -300,11 +284,9 @@ body {
 
 .vs {
   width: 100%;
-  top: 35.5%;
-  /* padding-left: 46.6vw; */
-  /* padding-right: 12.5vw; */
+  top: 29%;
   font-family: Allura;
-  font-size: 3vw;
+  font-size: 5vw;
   text-align: center;
 }
 
@@ -317,9 +299,7 @@ body {
 
 .spouse2 {
   width: 100%;
-  top: 37%;
-  /* padding-left: 17.6vw; */
-  /* padding-right: 12.5vw; */
+  top: 33%;
   font-family: Allura;
   font-size: 11vw;
   text-align: center;
@@ -342,29 +322,13 @@ body {
 
 .countdownContainer {
   width: 100%;
-  top: 84%;
+  top: 78%;
   padding-left: 5.5vw;
   padding-right: 5.5vw;
   font-size: 4.5vw;
   text-align: center;
 }
 
-/*.flipdown {
-    width: unset !important;
-    height: unset !important;
-    top: 37%;
-    padding-left: 18.6vw;
-    font-size: 3vw;
-    font-weight: normal !important;
-}
-    .flipdown .rotor,
-    .flipdown .rotor-top,
-    .flipdown .rotor-bottom,
-    .flipdown .rotor-leaf,
-    .flipdown .rotor-leaf-rear,
-    .flipdown .rotor-leaf-front {
-        width: 5.5vw !important;
-    }*/
 .venue {
   width: 100%;
   text-align: center;
