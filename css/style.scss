@@ -148,8 +148,8 @@ body {
   text-align: center;
 
   @media screen and (min-width: 1024px) {
-    font-size: 30.72px;
-    top: 36.5%;
+    font-size: 47px;
+    top: 29%;
   }
 }
 
@@ -181,6 +181,10 @@ body {
   padding-right: 5.5vw;
   font-size: 4.5vw;
   text-align: center;
+
+  @media screen and (min-width: 1024px) {
+    font-size: 47px;
+  }
 }
 
 .venue {
