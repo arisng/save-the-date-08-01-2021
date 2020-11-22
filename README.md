@@ -1,3 +1,9 @@
+#credits
+- https://rendro.github.io/countdown/
+- bootstrap 4.4.1
+- google fonts
+- jquery 1.7.2
+
 # wedding invitation digital card
 I wanted to have a digital wedding invitation card for my wedding and this repo came to life.
 
