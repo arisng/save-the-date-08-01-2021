@@ -385,4 +385,47 @@ body {
 .invitation {
   text-transform: uppercase;
 }
+
+.form-container {
+  position: relative;
+  margin-top: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: "Quicksand";
+  color: #8e8e40;
+}
+
+.form-container form {
+  position: absolute;
+  bottom: 20px;
+  background: transparent;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.form-container form label {
+  font-weight: bold;
+}
+
+.form-container form input.form-control::-webkit-input-placeholder {
+  color: #8e8e40;
+}
+
+.form-container form button {
+  width: 100px;
+  background-color: #8e8e40;
+  border-color: unset;
+}
+
+.swal2-confirm.swal2-styled {
+  background-color: #8e8e40 !important;
+  border-color: unset !important;
+}
+
+.swal2-title,
+.swal2-html-container {
+  font-family: Allura !important;
+  font-size: 30px !important;
+}
 /*# sourceMappingURL=style.css.map */

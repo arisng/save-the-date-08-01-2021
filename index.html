@@ -10,7 +10,6 @@
 
     <link href="https://fonts.googleapis.com/css?family=Allura|Quicksand&display=swap" rel="stylesheet" />
 
-    <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <!-- <link rel="stylesheet" href="./css/style.min.css" /> -->
@@ -45,10 +44,50 @@
           </div>
         </div>
       </div>
+
+      <div class="form-container">
+        <img src="../save-the-date-10042020/images/gold-border-frame-bg-3.png" style="width: 100%; min-height: 600px;">
+
+        <form id="form1" class="needs-validation">
+          <div class="form-group">
+            <label for="name">✨ Tên của bạn</label>
+            <input type="text" class="form-control" name="name" id="name" placeholder="nhớ điền tên nhé"
+              autocomplete="off" required>
+          </div>
+
+          <div class="form-group">
+            <label>📢 Để có một bữa tiệc được chu đáo nhất, xin bạn vui lòng
+              xác nhận sự hiện diện của mình nhé</label>
+
+            <div class="custom-control custom-radio mb-2">
+              <input type="radio" class="custom-control-input" id="customRadio1" name="confirmation" value="yes"
+                required>
+              <label class="custom-control-label" for="customRadio1">Chắc chắn đi 😍🙌</label>
+            </div>
+
+            <div class="custom-control custom-radio">
+              <input type="radio" class="custom-control-input" id="customRadio2" name="confirmation" value="no">
+              <label class="custom-control-label" for="customRadio2">Rất tiếc, tôi không tham dự được 😒</label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="wishes">💌 Đôi lời tâm sự với Cô Dâu và Chú Rể 😊</label>
+            <textarea class="form-control" id="wishes" rows="7" name="wishes" required></textarea>
+          </div>
+
+          <div class="form-group d-flex form-group justify-content-center">
+            <button id="submitBtn" class="btn btn-primary" type="submit">Xác Nhận</button>
+          </div>
+
+        </form>
+      </div>
     </div>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="./js/jquery.countdown.min.js"></script>
+    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script async src="./js/jquery.countdown.min.js"></script>
     <script type="text/javascript">
       //https://rendro.github.io/countdown/
       $(function () {
@@ -73,6 +112,29 @@
         });
       });
 
+
+      // Serialize form via jQuery
+      (function ($) {
+        $.fn.serializeFormJSON = function () {
+
+          var o = {};
+          var a = this.serializeArray();
+          $.each(a, function () {
+            if (o[this.name]) {
+              if (!o[this.name].push) {
+                o[this.name] = [o[this.name]];
+              }
+              o[this.name].push(this.value || '');
+            } else {
+              o[this.name] = this.value || '';
+            }
+          });
+          return o;
+        };
+      })(jQuery);
+
+      let isFormValid = false;
+
       $(document).ready(function () {
         let windowHeight = $(window).innerHeight();
         let cardHeight = $(".card-container").outerHeight();
@@ -80,10 +142,60 @@
         let offset = windowHeight - cardHeight;
 
         if (offset > 0) {
-          $(".card-container").css("top", `${offset / 2}px`);
+          $(".card-container").css("top", `${offset / 4}px`);
         }
 
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.getElementsByClassName('needs-validation');
+        // Loop over them and prevent submission
+        var validation = Array.prototype.filter.call(forms, function (form) {
+          form.addEventListener('submit', function (event) {
+            event.preventDefault();
+            event.stopPropagation();
+
+            if (form.checkValidity() === false) {
+
+            }
+            else {
+              isFormValid = true;
+
+              let data = $(this).serializeFormJSON();
+              console.log(data)
+
+              submitForm(data);
+            }
+
+            form.classList.add('was-validated');
+          }, false);
+        });
       });
+
+      function submitForm(data) {
+        let $form = $('#form1');
+        let url = 'https://script.google.com/macros/s/AKfycbwtFDR1OcQ66PskJoetEljs2unrTo14OKOIUYMcyj9lvfIYtuBi/exec';
+
+        // let data = $form.serialize();
+        // console.log(data)
+
+        var jqxhr = $.ajax({
+          url: url,
+          method: "GET",
+          dataType: "json",
+          data: data,
+          success: function (result) {
+            console.log("submitted successfully.")
+            Swal.fire({
+              title: 'Sweet!',
+              text: 'Thank You',
+              imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/master/images/couple-2.jpg',
+              imageWidth: 278,
+              imageHeight: 389,
+              imageAlt: 'couple',
+            })
+          }
+        });
+      }
+
     </script>
   </body>
 
