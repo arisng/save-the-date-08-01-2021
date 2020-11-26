@@ -260,11 +260,19 @@ body {
     }
 
     button {
-      width: 100px;
-      background-color: #8e8e40;
-      border-color: unset;
+      width: 100px !important;
+      background-color: #8e8e40 !important;
+      border-color: unset !important;
+      color: white !important;
     }
   }
+}
+
+.btn-primary.focus,
+.btn-primary:hover,
+.btn-primary:not(:disabled):not(.disabled):active {
+  background-color: #8e8e40 !important;
+  border-color: unset !important;
 }
 
 .swal2-confirm.swal2-styled {

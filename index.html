@@ -11,8 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Allura|Quicksand&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
-    <!-- <link rel="stylesheet" href="./css/style.css" /> -->
-    <link rel="stylesheet" href="./css/style.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+    <!-- <link rel="stylesheet" href="./css/style.min.css" /> -->
   </head>
 
   <body>
@@ -46,16 +46,18 @@
       </div>
 
       <div class="form-container">
-        <img src="../save-the-date-10042020/images/gold-border-frame-bg-3.png" style="width: 100%; min-height: 600px;">
+        <img src="../save-the-date-10042020/images/gold-border-frame-bg-3.png" style="width: 100%; min-height: 700px;">
 
-        <form id="form1" class="needs-validation">
-          <div class="form-group">
-            <label for="name">✨ Tên của bạn</label>
+        <form id="form1" class="needs-validation" novalidate>
+          <div class="form-group mb-4">
+            <label for="name" class="ml-4">✨ Tên của bạn 🎉</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="nhớ điền tên nhé"
               autocomplete="off" required>
+            <div class="valid-feedback">✅</div>
+            <div class="invalid-feedback">nhớ điền tên nè</div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label>📢 Để có một bữa tiệc được chu đáo nhất, xin bạn vui lòng
               xác nhận sự hiện diện của mình nhé</label>
 
@@ -68,16 +70,20 @@
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="customRadio2" name="confirmation" value="no">
               <label class="custom-control-label" for="customRadio2">Rất tiếc, tôi không tham dự được 😒</label>
+              <small>nhớ đòi số tài khoản của chú rể nhé 😜</small>
+              <div class="valid-feedback">✅</div>
             </div>
           </div>
 
-          <div class="form-group">
+          <div class="form-group mb-4">
             <label for="wishes">💌 Đôi lời tâm sự với Cô Dâu và Chú Rể 😊</label>
             <textarea class="form-control" id="wishes" rows="7" name="wishes" required></textarea>
+            <div class="valid-feedback">✅</div>
+            <div class="invalid-feedback">chúc gì đó đi 😘</div>
           </div>
 
           <div class="form-group d-flex form-group justify-content-center">
-            <button id="submitBtn" class="btn btn-primary" type="submit">Xác Nhận</button>
+            <button id="submitBtn" class="btn" type="submit">Xác Nhận</button>
           </div>
 
         </form>
@@ -142,7 +148,8 @@
         let offset = windowHeight - cardHeight;
 
         if (offset > 0) {
-          $(".card-container").css("top", `${offset / 4}px`);
+          // $(".card-container").css("top", `${offset / 4}px`);
+          $(".card-container").css("top", `5vh`);
         }
 
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -187,7 +194,7 @@
             Swal.fire({
               title: 'Sweet!',
               text: 'Thank You',
-              imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/master/images/couple-2.jpg',
+              imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
               imageWidth: 278,
               imageHeight: 389,
               imageAlt: 'couple',
