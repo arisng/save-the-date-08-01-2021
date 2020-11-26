@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta property="og:image" content="https://arisng.github.io/save-the-date-08-01-2021/images/couple-2.jpg" />
-
+    <link rel="SHORTCUT ICON" href="./images/wedding-couple-32-182970.ico" />
     <link href="https://fonts.googleapis.com/css?family=Allura|Quicksand&display=swap" rel="stylesheet" />
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
@@ -90,10 +90,10 @@
       </div>
     </div>
 
-    <!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script> -->
-    <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
-    <script async src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
-    <script async src="./js/jquery.countdown.min.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="./js/jquery.countdown.min.js"></script>
     <script type="text/javascript">
       //https://rendro.github.io/countdown/
       $(function () {
@@ -189,20 +189,29 @@
           method: "GET",
           dataType: "json",
           data: data,
-          success: function (result) {
-            console.log("submitted successfully.")
-            Swal.fire({
-              title: 'Sweet!',
-              text: 'Thank You',
-              imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
-              imageWidth: 278,
-              imageHeight: 389,
-              imageAlt: 'couple',
-            })
-          }
+          // success: function (result) {
+          //   console.log("submitted successfully.")
+          //   Swal.fire({
+          //     title: 'Sweet!',
+          //     text: 'Thank You',
+          //     imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
+          //     imageWidth: 278,
+          //     imageHeight: 389,
+          //     imageAlt: 'couple',
+          //   })
+          // }
+        }).success(function (rooms) {
+          console.log("submitted successfully.")
+          Swal.fire({
+            title: 'Sweet!',
+            text: 'Thank You',
+            imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
+            imageWidth: 278,
+            imageHeight: 389,
+            imageAlt: 'couple'
+          })
         });
       }
-
     </script>
   </body>
 
