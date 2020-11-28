@@ -10,7 +10,9 @@
     <link rel="SHORTCUT ICON" href="./images/wedding-couple-32-182970.ico" />
     <link href="https://fonts.googleapis.com/css?family=Allura|Quicksand&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" /> -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+      integrity="sha384-CuOF+2SnTUfTwSZjCXf01h7uYhfOBuxIhGKPbfEJ3+FqH/s6cIFN9bGr1HmAg4fQ" crossorigin="anonymous">
     <link rel="stylesheet" href="./css/style.css" />
     <!-- <link rel="stylesheet" href="./css/style.min.css" /> -->
   </head>
@@ -70,8 +72,10 @@
             <div class="custom-control custom-radio">
               <input type="radio" class="custom-control-input" id="customRadio2" name="confirmation" value="no">
               <label class="custom-control-label" for="customRadio2">Rất tiếc, tôi không tham dự được 😒</label>
+              <br>
               <small>nhớ đòi số tài khoản của chú rể nhé 😜</small>
               <div class="valid-feedback">✅</div>
+              <div class="invalid-feedback">xác nhận giúp mình nhé</div>
             </div>
           </div>
 
@@ -83,7 +87,10 @@
           </div>
 
           <div class="form-group d-flex form-group justify-content-center">
-            <button id="submitBtn" class="btn" type="submit">Xác Nhận</button>
+            <button id="submitBtn" class="btn" type="submit">
+              <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" style="display: none"></span>
+              Xác Nhận
+            </button>
           </div>
 
         </form>
@@ -91,6 +98,9 @@
     </div>
 
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-popRpmFF9JQgExhfw5tZT4I9/CI5e2QcuUZPOVXb1m7qUmeR2b50u+YFEYe1wgzy"
+      crossorigin="anonymous"></script>
     <!-- <script src="https://code.jquery.com/jquery-3.5.0.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="./js/jquery.countdown.min.js"></script>
@@ -167,8 +177,10 @@
               isFormValid = true;
 
               let data = $(this).serializeFormJSON();
+              // let data = JSON.parse(data);
               console.log(data)
 
+              displaySpinner();
               submitForm(data);
             }
 
@@ -177,31 +189,36 @@
         });
       });
 
+      let submitBtnEl = document.getElementById('submitBtn');
+      let spinnerEl = submitBtnEl.querySelector('.spinner-grow');
+
+      function displaySpinner() {
+        // re-enable submit button
+        submitBtnEl.disabled = true;
+        // hide spinner
+        spinnerEl.style.display = '';
+      }
+
+      function hideSpinner() {
+        // re-enable submit button
+        submitBtnEl.disabled = false;
+        // hide spinner
+        spinnerEl.style.display = 'none';
+      }
+
       function submitForm(data) {
-        let $form = $('#form1');
         let url = 'https://script.google.com/macros/s/AKfycbwtFDR1OcQ66PskJoetEljs2unrTo14OKOIUYMcyj9lvfIYtuBi/exec';
 
-        // let data = $form.serialize();
-        // console.log(data)
+        displaySpinner();
 
         var jqxhr = $.ajax({
           url: url,
           method: "GET",
           dataType: "json",
           data: data,
-          // success: function (result) {
-          //   console.log("submitted successfully.")
-          //   Swal.fire({
-          //     title: 'Sweet!',
-          //     text: 'Thank You',
-          //     imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
-          //     imageWidth: 278,
-          //     imageHeight: 389,
-          //     imageAlt: 'couple',
-          //   })
-          // }
         }).success(function (rooms) {
-          console.log("submitted successfully.")
+          console.log("submit form - submitted successfully!")
+
           Swal.fire({
             title: 'Sweet!',
             text: 'Thank You',
@@ -209,8 +226,48 @@
             imageWidth: 278,
             imageHeight: 389,
             imageAlt: 'couple'
-          })
+          });
+
+          hideSpinner();
         });
+
+        // var request = new XMLHttpRequest();
+        // request.open('GET', url, true);
+        // request.setRequestHeader('Content-Type', 'application/json; charset=UTF-8');
+        // request.onprogress = function () {
+        //   console.log('submit form - onprogress')
+        // };
+
+        // request.onload = function () {
+        //   if (this.status >= 200 && this.status < 400) {
+        //     // Success!
+        //     var data = JSON.parse(this.response);
+        //     console.log(data);
+        //     console.log('submit form - submitted successfully!')
+
+        //     Swal.fire({
+        //       title: 'Sweet!',
+        //       text: 'Thank You',
+        //       imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
+        //       imageWidth: 278,
+        //       imageHeight: 389,
+        //       imageAlt: 'couple'
+        //     });
+
+
+        //   } else {
+        //     // We reached our target server, but it returned an error
+        //   }
+
+        //   hideSpinner();
+        // };
+
+        // request.onerror = function () {
+        //   // There was a connection error of some sort
+        //   hideSpinner();
+        // };
+
+        // request.send(data);
       }
     </script>
   </body>

@@ -3,6 +3,9 @@
 - bootstrap 4.4.1
 - google fonts
 - jquery 1.7.2
+- https://sweetalert2.github.io/#examples
+- https://www.freefavicon.com/
+- https://icons8.com/icons/set/wedding
 
 # wedding invitation digital card
 I wanted to have a digital wedding invitation card for my wedding and this repo came to life.
