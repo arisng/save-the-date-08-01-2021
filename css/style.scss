@@ -1,5 +1,6 @@
 @import "breakpoints";
-@import "calendar";
+// @import "calendar";
+@import url("https://fonts.googleapis.com/css?family=Allura|Quicksand&display=swap");
 
 .iframe {
   width: 100vw;
@@ -64,7 +65,16 @@
 
 body {
   overflow-x: hidden;
-  // color: white;
+  position: absolute;
+  left: 0;
+  top: 0;
+
+  @media screen and (min-width: 1024px) {
+    width: 90%;
+    left: 5%;
+    top: 5%;
+    height: 90%;
+  }
 }
 
 .content-container {
@@ -78,40 +88,46 @@ body {
 }
 
 .card-container {
-  overflow-x: hidden;
   position: relative;
   width: 100%;
   color: #8e8e40;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.card-content {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
 }
 
 .card-background {
   width: 100%;
+  height: auto;
   display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
+  position: relative;
+  overflow: scroll;
 
   @media screen and (min-width: 1024px) {
+    height: auto;
   }
 
   @media screen and (min-width: 1366px) {
+    height: auto;
   }
 }
 
 .overlay {
-  position: absolute;
   font-family: Quicksand;
 }
 
 .title {
   width: 100%;
   text-align: center;
-  top: 11%;
-  padding-left: 16.6vw;
-  padding-right: 12.5vw;
   font-family: Quicksand;
   font-size: 4vw;
+  padding-top: 11%;
 
   @media screen and (min-width: 1024px) {
     font-size: 40.96px;
@@ -130,10 +146,10 @@ body {
 
 .spouse1 {
   width: 100%;
-  top: 20%;
-  font-family: Allura;
+  font-family: "Allura", cursive;
   font-size: 11vw;
   text-align: center;
+  margin-top: 5%;
 
   @media screen and (min-width: 1024px) {
     font-size: 112px;
@@ -142,7 +158,6 @@ body {
 
 .vs {
   width: 100%;
-  top: 29%;
   font-family: Allura;
   font-size: 5vw;
   text-align: center;
@@ -159,6 +174,7 @@ body {
   font-family: Allura;
   font-size: 11vw;
   text-align: center;
+  margin-bottom: 5%;
 
   @media screen and (min-width: 1024px) {
     font-size: 112px;
@@ -176,11 +192,9 @@ body {
 
 .countdownContainer {
   width: 100%;
-  top: 78%;
-  padding-left: 5.5vw;
-  padding-right: 5.5vw;
   font-size: 4.5vw;
   text-align: center;
+  padding-top: 11%;
 
   @media screen and (min-width: 1024px) {
     font-size: 47px;
@@ -190,9 +204,6 @@ body {
 .venue {
   width: 100%;
   text-align: center;
-  top: 46%;
-  padding-left: 14.6vw;
-  padding-right: 12.5vw;
   font-size: 5vw;
 
   .datetime {
@@ -222,8 +233,6 @@ body {
 
 .venue2 {
   width: 100%;
-  margin-left: -14vw;
-  padding-right: unset;
   font-size: 3vw;
 
   @media screen and (min-width: 1024px) {
@@ -237,19 +246,24 @@ body {
 
 .form-container {
   position: relative;
-  margin-top: 10vh;
-  margin-left: auto;
-  margin-right: auto;
   font-family: "Quicksand";
   color: #8e8e40;
+  margin-bottom: 5vh;
+  margin-top: 10vh;
+
+  .form-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
 
   form {
-    position: absolute;
-    bottom: 20px;
-    background: transparent;
+    position: relative;
     width: 100%;
-    padding-left: 20px;
-    padding-right: 20px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 15%;
+    min-height: 700px;
 
     label {
       font-weight: bold;
@@ -259,11 +273,17 @@ body {
       color: #8e8e40;
     }
 
-    button {
-      // width: 100px !important;
-      background-color: #8e8e40 !important;
-      border-color: unset !important;
-      color: white !important;
+    .form-actions {
+      position: absolute;
+      bottom: 8%;
+      width: 90%;
+
+      button {
+        // width: 100px !important;
+        background-color: #8e8e40 !important;
+        border-color: unset !important;
+        color: white !important;
+      }
     }
   }
 }

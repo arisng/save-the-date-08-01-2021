@@ -8,7 +8,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta property="og:image" content="https://arisng.github.io/save-the-date-08-01-2021/images/couple-2.jpg" />
     <link rel="SHORTCUT ICON" href="./images/wedding-couple-32-182970.ico" />
-    <link href="https://fonts.googleapis.com/css?family=Allura|Quicksand&display=swap" rel="stylesheet" />
 
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" /> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,41 +19,42 @@
   <body>
     <div class="content-container">
       <div class="card-container">
-        <img class="card-background" src="./images/gold-wedding-card-bg.png" />
+        <img class="card-background" src="./images/gold-wedding-card-bg.png">
 
-        <p class="overlay title">We're getting married</p>
+        <div class="card-content">
 
-        <h1 class="overlay spouse1">Đ ình Tin</h1>
-        <h2 class="overlay vs">AND</h2>
-        <h2 class="overlay spouse2">Thu Linh</h2>
+          <div class="overlay title">We're getting married</div>
+          <div class="overlay spouse1">Đ ình Tín</div>
+          <div class="overlay vs">AND</div>
+          <div class="overlay spouse2">Thu Linh</div>
 
-        <div class="overlay countdownContainer"></div>
-
-        <div class="overlay venue">
-          <div class="flex-fill overlay venue2">
-            <p class="invitation">invite you</p>
-            <p class="invitation">to celebrate our marriage</p>
-            <!-- <p class="invitation">on friday</p> -->
-            <p class="datetime" style="margin-top: 4px;">08 | 01 | 2021</p>
-            <p class="time" style="margin-top: 0px;"><b>on friday, at 5:30 pm</b></p>
-            <p class="place"><b>Quinter Center | sảnh Diamond</b> <i>86 Trần Phú - Nha Trang</i></p>
-            <p class="">
-              <a href="https://g.page/quinter-central-nha-trang?share" target="_blank">
-                <img src="./images/location-pin.svg" width="13px">map
-              </a>
-            </p>
+          <div class="overlay venue">
+            <div class="flex-fill overlay venue2">
+              <div class="invitation">invite you</div>
+              <div class="invitation">to celebrate our marriage</div>
+              <!-- <p class="invitation">on friday</p> -->
+              <div class="datetime">08 | 01 | 2021</div>
+              <div class="time"><b>on friday, at 5:30 pm</b></div>
+              <div class="place"><b>Quinter Center | sảnh Diamond</b> <i>86 Trần Phú - Nha Trang</i></div>
+              <div class="">
+                <a href="https://g.page/quinter-central-nha-trang?share" target="_blank">
+                  <img src="./images/location-pin.svg" width="13px">map
+                </a>
+              </div>
+            </div>
           </div>
+          <div class="overlay countdownContainer">33 days, 22 hours, 05 min and 10 sec</div>
         </div>
       </div>
 
       <div class="form-container">
-        <img src="./images/gold-border-frame-bg-3.png" style="width: 100%; min-height: 700px;">
+        <img class="form-background" src="./images/gold-border-frame-bg-3.png">
 
-        <form id="form1" class="needs-validation" novalidate>
+        <form id="form1" class="needs-validation" novalidate="">
           <div class="form-group mb-4">
             <label for="name" class="ml-4">✨ Tên của bạn 🎉</label>
             <input type="text" class="form-control" name="name" id="name" placeholder="nhớ điền tên nhé"
-              autocomplete="off" required>
+              autocomplete="off" required="">
             <div class="valid-feedback">✅</div>
             <div class="invalid-feedback">nhớ điền tên nè</div>
           </div>
@@ -65,8 +65,8 @@
 
             <div class="custom-control custom-radio mb-2">
               <input type="radio" class="custom-control-input" id="customRadio1" name="confirmation" value="yes"
-                required>
-              <label class="custom-control-label" for="customRadio1">Chắc chắn đi 😍🙌</label>
+                required="">
+              <label class="custom-control-label" for="customRadio1">Tôi sẽ tham dự 😍🙌</label>
             </div>
 
             <div class="custom-control custom-radio">
@@ -81,12 +81,12 @@
 
           <div class="form-group mb-4">
             <label for="wishes">💌 Đôi lời tâm sự với Cô Dâu và Chú Rể 😊</label>
-            <textarea class="form-control" id="wishes" rows="7" name="wishes" required></textarea>
+            <textarea class="form-control" id="wishes" rows="7" name="wishes" required=""></textarea>
             <div class="valid-feedback">✅</div>
             <div class="invalid-feedback">chúc gì đó đi 😘</div>
           </div>
 
-          <div class="form-group d-flex form-group justify-content-center">
+          <div class="form-group form-actions d-flex form-group justify-content-center">
             <button id="submitBtn" class="btn" type="submit">
               <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true" style="display: none"></span>
               Xác Nhận
@@ -159,7 +159,7 @@
 
         if (offset > 0) {
           // $(".card-container").css("top", `${offset / 4}px`);
-          $(".card-container").css("top", `5vh`);
+          $(".card-container").css("top", `2vh`);
         }
 
         // Fetch all the forms we want to apply custom Bootstrap validation styles to
@@ -180,7 +180,6 @@
               // let data = JSON.parse(data);
               console.log(data)
 
-              displaySpinner();
               submitForm(data);
             }
 
@@ -201,7 +200,7 @@
 
       function hideSpinner() {
         // re-enable submit button
-        submitBtnEl.disabled = false;
+        submitBtnEl.disabled = true;
         // hide spinner
         spinnerEl.style.display = 'none';
       }
@@ -213,15 +212,28 @@
 
         var jqxhr = $.ajax({
           url: url,
-          method: "GET",
+          type: "GET",
           dataType: "json",
           data: data,
-        }).success(function (rooms) {
+        }).success(function (result) {
           console.log("submit form - submitted successfully!")
 
           Swal.fire({
-            title: 'Sweet!',
-            text: 'Thank You',
+            title: 'Thank You!',
+            text: "Love doesn't need to be Perfect. It just needs to be True",
+            imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
+            imageWidth: 278,
+            imageHeight: 389,
+            imageAlt: 'couple'
+          });
+
+          hideSpinner();
+        }).error(function (jqXHR, textStatus, errorThrown) {
+          // console.log('textStatus = ' + textStatus);
+          // console.log('errorThrown = ' + errorThrown);
+          Swal.fire({
+            title: 'Thank You',
+            text: "Love doesn't need to be Perfect.It just needs to be True",
             imageUrl: 'https://raw.githubusercontent.com/arisng/save-the-date-08-01-2021/tin-wedding/images/couple-2.jpg',
             imageWidth: 278,
             imageHeight: 389,
@@ -270,6 +282,45 @@
         // request.send(data);
       }
     </script>
+    <!-- Code injected by live-server -->
+    <script type="text/javascript">
+      // <![CDATA[  <-- For SVG support
+      if ('WebSocket' in window) {
+        (function () {
+          function refreshCSS() {
+            var sheets = [].slice.call(document.getElementsByTagName("link"));
+            var head = document.getElementsByTagName("head")[0];
+            for (var i = 0; i < sheets.length; ++i) {
+              var elem = sheets[i];
+              var parent = elem.parentElement || head;
+              parent.removeChild(elem);
+              var rel = elem.rel;
+              if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+                var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+                elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+              }
+              parent.appendChild(elem);
+            }
+          }
+          var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+          var address = protocol + window.location.host + window.location.pathname + '/ws';
+          var socket = new WebSocket(address);
+          socket.onmessage = function (msg) {
+            if (msg.data == 'reload') window.location.reload();
+            else if (msg.data == 'refreshcss') refreshCSS();
+          };
+          if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+            console.log('Live reload enabled.');
+            sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+          }
+        })();
+      }
+      else {
+        console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+      }
+  	// ]]>
+    </script>
+
   </body>
 
 </html>
