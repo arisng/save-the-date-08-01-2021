@@ -4,9 +4,11 @@
 - bootstrap 5 - https://v5.getbootstrap.com/
 - google fonts
 - jquery 1.7.2
+- https://api.jquery.com/jquery.ajax/
 - http://youmightnotneedjquery.com/
 - https://developer.mozilla.org/en-US/docs/Web/API
 - https://sweetalert2.github.io/#examples
+- https://script.google.com/home
 
 #Design Credits:
 - https://www.freefavicon.com/
